@@ -1,13 +1,15 @@
 from turtle import Turtle
 
+STARTING_POSITIONS = [(0,0), (-20,0),(-40,0)]
+
 class Snake():
 
     def __init__(self):
-
-        self.starting_position = [(0,0), (-20,0),(-40,0)]
         self.sneak_segments = []
+        self.create_snake()
 
-        for p in self.starting_position:
+    def create_snake(self):
+        for p in STARTING_POSITIONS:
             sneak_segment = Turtle("square")
             sneak_segment.penup()
             sneak_segment.color('white')
