@@ -13,6 +13,8 @@ screen.tracer(0)
 snake = Snake()
 food = Food()
 
+
+#snake key commands
 screen.listen()
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
@@ -25,8 +27,11 @@ game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
-
     snake.move()
+
+    #Detect collision with food
+    if snake.snake_head.distance(food) < 15:
+        food.refresh()
 
 
 
