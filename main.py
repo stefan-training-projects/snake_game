@@ -32,6 +32,7 @@ while game_is_on:
     for seg_num in range(len(sneak_segments)-1, 0,-1):
         new_x = sneak_segments[seg_num-1].xcor()
         new_y = sneak_segments[seg_num-1].ycor()
+        sneak_segments[seg_num].goto(new_x,new_y)
 
     sneak_segments[0].forward(20)
 
