@@ -4,11 +4,11 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
-#screen details
+# screen details
 screen = Screen()
 screen.setup(width=600, height=600)
-screen.bgcolor('black')
-screen.title('Sneky Snek')
+screen.bgcolor("black")
+screen.title("Sneky Snek")
 screen.tracer(0)
 
 snake = Snake()
@@ -16,7 +16,7 @@ food = Food()
 score = Scoreboard()
 
 
-#snake key commands
+# snake key commands
 screen.listen()
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
@@ -25,17 +25,26 @@ screen.onkey(snake.right, "Right")
 
 game_is_on = True
 
-#move sneak
+# move sneak
 while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
 
-    #Detect collision between snake and food
+    # Detect collision between snake and food
     if snake.snake_head.distance(food) < 15:
         food.refresh()
         score.update_score()
 
+    # Detect colision with wall
+    if (
+        snake.snake_head.xcor() > 290
+        or snake.snake_head.xcor() < -290
+        or snake.snake_head.ycor() > 290
+        or snake.snake_head.ycor() < -290
+    ):
+        game_is_on = False
+        score.game_over()
 
 
 screen.exitonclick()
