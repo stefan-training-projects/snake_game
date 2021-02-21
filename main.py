@@ -45,12 +45,14 @@ while game_is_on:
         or snake.snake_head.ycor() < -290
     ):
         score.reset()
+        snake.reset()
 
 
     #Detect collision with tail
     for segment in snake.snake_segments[1:]:
         if snake.snake_head.distance(segment) < 10:
             score.reset()
+            snake.reset()
 
 
 
